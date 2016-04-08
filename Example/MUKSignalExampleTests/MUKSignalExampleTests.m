@@ -49,9 +49,9 @@
     XCTAssertNil(receivedPayload);
 }
 
-- (void)testSuspendable {
-    MUKSuspendableSignal *const signal = [[MUKSuspendableSignal alloc] init];
-    
+- (void)testSuspending {
+    MUKSignal *const signal = [[MUKSignal alloc] init];
+
     id const payload = @"!";
     XCTAssertNoThrow([signal dispatch:payload]);
     
@@ -85,6 +85,29 @@
     [signal unsubscribe:token];
     XCTAssertNoThrow([signal resume:token]);
     XCTAssertNil(receivedPayload);
+}
+
+- (void)testNotification {
+    NSString *const name = @"Notification";
+    MUKNotificationSignal *const signal = [[MUKNotificationSignal alloc] initWithName:name object:nil];
+    XCTAssertEqual(signal.name, name);
+    XCTAssertNil(signal.object);
+    
+    __block NSNotification *receivedNotification = nil;
+    id const token = [signal subscribe:^(NSNotification * _Nonnull notification) {
+        receivedNotification = notification;
+    }];
+    
+    XCTAssertNil(receivedNotification);
+    NSDictionary *const userInfo = @{ @"info" : [NSDate date] };
+    [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
+    XCTAssertEqual(receivedNotification.name, name);
+    XCTAssertEqual(receivedNotification.userInfo, userInfo);
+    
+    receivedNotification = nil;
+    [signal unsubscribe:token];
+    [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
+    XCTAssertNil(receivedNotification);
 }
 
 @end

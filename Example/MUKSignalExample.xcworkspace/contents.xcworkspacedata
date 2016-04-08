@@ -11,20 +11,29 @@
          location = "group:Core"
          name = "Core">
          <FileRef
-            location = "group:MUKBaseSignal.h">
+            location = "group:MUKSignal+Dispatching.h">
          </FileRef>
          <FileRef
-            location = "group:MUKBaseSignal.m">
+            location = "group:MUKSignal+Subscribing.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal+Suspending.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal-Base.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal.m">
          </FileRef>
       </Group>
       <Group
-         location = "group:Suspendable"
-         name = "Suspendable">
+         location = "group:Notification"
+         name = "Notification">
          <FileRef
-            location = "group:MUKSuspendableSignal.h">
+            location = "group:MUKNotificationSignal.h">
          </FileRef>
          <FileRef
-            location = "group:MUKSuspendableSignal.m">
+            location = "group:MUKNotificationSignal.m">
          </FileRef>
       </Group>
    </Group>

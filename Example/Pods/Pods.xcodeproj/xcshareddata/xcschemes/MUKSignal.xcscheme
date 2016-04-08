@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8B76A717A3AC602082C3E286'
+               BlueprintIdentifier = 'F1AE8F83B5A656ED389079BC'
                BlueprintName = 'MUKSignal'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libMUKSignal.a'>

@@ -1,13 +1,13 @@
-#import <MUKSignal/MUKSignal.h>
+#import <MUKSignal/MUKSignal-Base.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- A signal which can be observed with a suspendable subscription. 
- When a subscriber is suspended, dispatching a signal does not invoke a 
+ A signal which can be observed with a suspendable subscription.
+ When a subscriber is suspended, dispatching a signal does not invoke a
  subscriber. When subscriber is resumed it receives the last dispatched payload.
  */
-@interface MUKSuspendableSignal : MUKSignal
+@interface MUKSignal (Suspending)
 /**
  Suspend a subscriber
  @param token Subscription token
@@ -26,3 +26,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
