@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <MUKSignal/MUKSignal.h>
 
 @interface MUKSignalExampleTests : XCTestCase
 
@@ -14,26 +15,38 @@
 
 @implementation MUKSignalExampleTests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+- (void)testSubscribing {
+    MUKSignal *const signal = [[MUKSignal alloc] init];
+    id const token = [signal subscribe:^(id  _Nonnull payload) {}];
+    XCTAssertNotNil(token);
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+- (void)testUnsubscribing {
+    MUKSignal *const signal = [[MUKSignal alloc] init];
+    id const token = [signal subscribe:^(id  _Nonnull payload) {}];
+    XCTAssertNoThrow([signal unsubscribe:token]);
+    XCTAssertNoThrow([signal unsubscribe:token]); // Also twice
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)testDispatching {
+    MUKSignal *const signal = [[MUKSignal alloc] init];
+    
+    id const payload = @"!";
+    XCTAssertNoThrow([signal dispatch:payload]);
+    
+    __block id receivedPayload = nil;
+    id const token = [signal subscribe:^(id  _Nonnull payload) {
+        receivedPayload = payload;
     }];
+    
+    XCTAssertNil(receivedPayload);
+    [signal dispatch:payload];
+    XCTAssertEqual(receivedPayload, payload);
+    
+    [signal unsubscribe:token];
+    receivedPayload = nil;
+    [signal dispatch:payload];
+    XCTAssertNil(receivedPayload);
 }
 
 @end
