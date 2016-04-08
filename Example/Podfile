@@ -1,0 +1,5 @@
+pod "MUKSignal", :path => "../"
+
+target "MUKSignalExampleTests", :exclusive => false do
+  pod "MUKSignal", :path => "../"
+end
