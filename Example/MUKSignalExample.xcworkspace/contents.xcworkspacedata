@@ -17,6 +17,16 @@
             location = "group:MUKBaseSignal.m">
          </FileRef>
       </Group>
+      <Group
+         location = "group:Suspendable"
+         name = "Suspendable">
+         <FileRef
+            location = "group:MUKSuspendableSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSuspendableSignal.m">
+         </FileRef>
+      </Group>
    </Group>
    <FileRef
       location = "group:MUKSignalExample.xcodeproj">

@@ -34,8 +34,13 @@
 - (void)dispatch:(id)payload {
     [[_subscriptions copy] enumerateKeysAndObjectsUsingBlock:^(NSUUID * _Nonnull key, MUKSignalSubscriber _Nonnull obj, BOOL * _Nonnull stop)
     {
-        obj(payload);
+        [self dispatchToSubscriber:obj withPayload:payload subscriptionToken:key];
     }];
+}
+
+- (void)dispatchToSubscriber:(MUKSignalSubscriber)subscriber withPayload:(id)payload subscriptionToken:(nonnull id)token
+{
+    subscriber(payload);
 }
 
 @end

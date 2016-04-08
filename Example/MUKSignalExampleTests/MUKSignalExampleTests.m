@@ -49,4 +49,42 @@
     XCTAssertNil(receivedPayload);
 }
 
+- (void)testSuspendable {
+    MUKSuspendableSignal *const signal = [[MUKSuspendableSignal alloc] init];
+    
+    id const payload = @"!";
+    XCTAssertNoThrow([signal dispatch:payload]);
+    
+    __block id receivedPayload = nil;
+    id const token = [signal subscribe:^(id  _Nonnull payload) {
+        receivedPayload = payload;
+    }];
+    
+    XCTAssertNil(receivedPayload);
+    [signal dispatch:payload];
+    XCTAssertEqual(receivedPayload, payload);
+    
+    receivedPayload = nil;
+    [signal suspend:token];
+    [signal dispatch:payload];
+    XCTAssertNil(receivedPayload);
+    
+    [signal resume:token];
+    XCTAssertEqual(receivedPayload, payload);
+    
+    receivedPayload = nil;
+    [signal suspend:token];
+    [signal dispatch:payload];
+    [signal cancelDeferredDispatch:token];
+    [signal resume:token];
+    XCTAssertNil(receivedPayload);
+    
+    receivedPayload = nil;
+    [signal suspend:token];
+    [signal dispatch:payload];
+    [signal unsubscribe:token];
+    XCTAssertNoThrow([signal resume:token]);
+    XCTAssertNil(receivedPayload);
+}
+
 @end
