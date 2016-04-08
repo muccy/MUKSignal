@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../Pod"
+      name = "Pod">
+      <FileRef
+         location = "group:MUKSignal.h">
+      </FileRef>
+      <Group
+         location = "group:Core"
+         name = "Core">
+         <FileRef
+            location = "group:MUKBaseSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKBaseSignal.m">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:MUKSignalExample.xcodeproj">
    </FileRef>

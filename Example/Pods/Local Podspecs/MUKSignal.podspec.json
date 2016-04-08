@@ -16,5 +16,10 @@
     "ios": "7.0"
   },
   "requires_arc": true,
-  "source_files": "Pod/**/*.{h,m}"
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "Pod/Core/**/*.{h,m}"
+    }
+  ]
 }
