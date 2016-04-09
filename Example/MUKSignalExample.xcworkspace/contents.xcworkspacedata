@@ -36,6 +36,16 @@
             location = "group:MUKNotificationSignal.m">
          </FileRef>
       </Group>
+      <Group
+         location = "group:KVO"
+         name = "KVO">
+         <FileRef
+            location = "group:MUKKVOSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKKVOSignal.m">
+         </FileRef>
+      </Group>
    </Group>
    <FileRef
       location = "group:MUKSignalExample.xcodeproj">

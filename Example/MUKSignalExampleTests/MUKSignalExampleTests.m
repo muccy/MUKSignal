@@ -10,7 +10,7 @@
 #import <MUKSignal/MUKSignal.h>
 
 @interface MUKSignalExampleTests : XCTestCase
-
+@property (nonatomic, copy) NSString *string;
 @end
 
 @implementation MUKSignalExampleTests
@@ -41,7 +41,7 @@
     
     XCTAssertNil(receivedPayload);
     [signal dispatch:payload];
-    XCTAssertEqual(receivedPayload, payload);
+    XCTAssertEqualObjects(receivedPayload, payload);
     
     [signal unsubscribe:token];
     receivedPayload = nil;
@@ -62,22 +62,16 @@
     
     XCTAssertNil(receivedPayload);
     [signal dispatch:payload];
-    XCTAssertEqual(receivedPayload, payload);
+    XCTAssertEqualObjects(receivedPayload, payload);
     
     receivedPayload = nil;
     [signal suspend:token];
     [signal dispatch:payload];
     XCTAssertNil(receivedPayload);
+    XCTAssertEqualObjects([signal suspendedDispatchPayload:token], payload);
     
     [signal resume:token];
-    XCTAssertEqual(receivedPayload, payload);
-    
-    receivedPayload = nil;
-    [signal suspend:token];
-    [signal dispatch:payload];
-    [signal cancelDeferredDispatch:token];
-    [signal resume:token];
-    XCTAssertNil(receivedPayload);
+    XCTAssertEqualObjects(receivedPayload, payload);
     
     receivedPayload = nil;
     [signal suspend:token];
@@ -90,7 +84,7 @@
 - (void)testNotification {
     NSString *const name = @"Notification";
     MUKNotificationSignal *const signal = [[MUKNotificationSignal alloc] initWithName:name object:nil];
-    XCTAssertEqual(signal.name, name);
+    XCTAssertEqualObjects(signal.name, name);
     XCTAssertNil(signal.object);
     
     __block NSNotification *receivedNotification = nil;
@@ -101,13 +95,46 @@
     XCTAssertNil(receivedNotification);
     NSDictionary *const userInfo = @{ @"info" : [NSDate date] };
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
-    XCTAssertEqual(receivedNotification.name, name);
-    XCTAssertEqual(receivedNotification.userInfo, userInfo);
+    XCTAssertEqualObjects(receivedNotification.name, name);
+    XCTAssertEqualObjects(receivedNotification.userInfo, userInfo);
     
     receivedNotification = nil;
     [signal unsubscribe:token];
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
     XCTAssertNil(receivedNotification);
+}
+
+- (void)testKVO {
+    MUKKVOSignal<NSString *> *const signal = [[MUKKVOSignal alloc] initWithObject:self keyPath:NSStringFromSelector(@selector(string))];
+    
+    __block MUKKVOSignalChange<NSString *> *receivedChange = nil;
+    id const token = [signal subscribe:^(MUKKVOSignalChange<NSString *> * _Nonnull change) {
+        receivedChange = change;
+    }];
+    
+    XCTAssertNil(receivedChange);
+    self.string = @"A";
+    XCTAssertEqualObjects(receivedChange.value, @"A");
+    XCTAssertNil(receivedChange.oldValue);
+    
+    self.string = nil;
+    XCTAssertNil(receivedChange.value);
+    XCTAssertEqualObjects(receivedChange.oldValue, @"A");
+    
+    MUKKVOSignalChange<NSString *> *const changeSnapshot = receivedChange;
+    [signal suspend:token];
+    self.string = @"A";
+    XCTAssertEqual(receivedChange, changeSnapshot);
+    self.string = @"B";
+    XCTAssertEqual(receivedChange, changeSnapshot);
+    
+    [signal resume:token];
+    XCTAssertEqualObjects(receivedChange.value, @"B");
+    XCTAssertNil(receivedChange.oldValue);
+    
+    [signal unsubscribe:token];
+    self.string = @"C";
+    XCTAssertEqualObjects(receivedChange.value, @"B");
 }
 
 @end

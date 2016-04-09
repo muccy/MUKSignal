@@ -3,3 +3,4 @@
 #import <MUKSignal/MUKSignal+Suspending.h>
 
 #import <MUKSignal/MUKNotificationSignal.h>
+#import <MUKSignal/MUKKVOSignal.h>

@@ -3,16 +3,18 @@
 #import "MUKSignal+Dispatching.h"
 #import "MUKSignal+Suspending.h"
 
+static NSString *const kNullPayload = @"MUKSignal-NullPayload";
+
 @interface MUKSignal ()
 @property (nonatomic, readonly, nonnull) NSMutableDictionary<NSUUID *, MUKSignalSubscriber> *subscriptions;
-@property (nonatomic, readonly, nonnull) NSMutableSet *suspendedTokens;
-@property (nonatomic, readonly, nonnull) NSMutableDictionary<id, dispatch_block_t> *deferredDispatches;
+@property (nonatomic, readonly, nonnull) NSMutableSet<NSUUID *> *suspendedTokens;
+@property (nonatomic, readonly, nonnull) NSMutableDictionary<NSUUID *, id> *suspendedDispatchPayloads;
 @end
 
 @implementation MUKSignal
 @synthesize subscriptions = _subscriptions;
 @synthesize suspendedTokens = _suspendedTokens;
-@synthesize deferredDispatches = _deferredDispatches;
+@synthesize suspendedDispatchPayloads = _suspendedDispatchPayloads;
 
 #pragma mark - Accessors
 
@@ -24,7 +26,7 @@
     return _subscriptions;
 }
 
-- (NSMutableSet *)suspendedTokens {
+- (NSMutableSet<NSUUID *> *)suspendedTokens {
     if (!_suspendedTokens) {
         _suspendedTokens = [NSMutableSet set];
     }
@@ -32,12 +34,12 @@
     return _suspendedTokens;
 }
 
-- (NSMutableDictionary<id,dispatch_block_t> *)deferredDispatches {
-    if (!_deferredDispatches) {
-        _deferredDispatches = [NSMutableDictionary dictionary];
+- (NSMutableDictionary<NSUUID *, id> *)suspendedDispatchPayloads {
+    if (!_suspendedDispatchPayloads) {
+        _suspendedDispatchPayloads = [NSMutableDictionary dictionary];
     }
     
-    return _deferredDispatches;
+    return _suspendedDispatchPayloads;
 }
 
 #pragma mark - Subscribing
@@ -50,7 +52,7 @@
 
 - (void)unsubscribe:(id)token {
     [_subscriptions removeObjectForKey:token];
-    [_deferredDispatches removeObjectForKey:token];
+    [_suspendedDispatchPayloads removeObjectForKey:token];
     [_suspendedTokens removeObject:token];
 }
 
@@ -63,14 +65,20 @@
     }];
 }
 
-- (void)dispatchToSubscriber:(MUKSignalSubscriber)subscriber withPayload:(id)payload subscriptionToken:(nonnull id)token
+- (void)dispatchToSubscriber:(MUKSignalSubscriber)subscriber withPayload:(nullable id)payload subscriptionToken:(nonnull id)token
 {
-    if ([_suspendedTokens containsObject:token]) {
-        __weak __typeof__(self) weakSelf = self;
-        self.deferredDispatches[token] = [^{
-            __strong __typeof__(weakSelf) strongSelf = weakSelf;
-            [strongSelf dispatchToSubscriber:subscriber withPayload:payload subscriptionToken:token];
-        } copy];
+    if ([self isSuspended:token]) {
+        id const rawSuspendedPayload = _suspendedDispatchPayloads[token];
+
+        id payloadToSuspend;
+        if (rawSuspendedPayload) {
+            payloadToSuspend = [self mergedDispatchPayload:payload withSuspendedPayload:DispatchablePayloadForRawPayload(rawSuspendedPayload)];
+        }
+        else {
+            payloadToSuspend = payload;
+        }
+        
+        [self storeSuspendedDispatchPayload:payloadToSuspend forSubscriptionToken:token];
     }
     else {
         subscriber(payload);
@@ -85,17 +93,47 @@
 
 - (void)resume:(id)token {
     [_suspendedTokens removeObject:token];
-    
-    dispatch_block_t const deferredDispatch = _deferredDispatches[token];
-    
-    if (deferredDispatch) {
-        deferredDispatch();
-        [self cancelDeferredDispatch:token];
-    }
+    [self consumeSuspendedDispatchPayloadForSubscriptionToken:token];
 }
 
-- (void)cancelDeferredDispatch:(id)token {
-    [_deferredDispatches removeObjectForKey:token];
+- (BOOL)isSuspended:(id)token {
+    return [_suspendedTokens containsObject:token];
+}
+
+- (id)suspendedDispatchPayload:(id)token {
+    id const rawPayload = _suspendedDispatchPayloads[token];
+    return DispatchablePayloadForRawPayload(rawPayload);
+}
+
+- (id)mergedDispatchPayload:(id)payload withSuspendedPayload:(id)suspendedPayload
+{
+    return payload;
+}
+
+#pragma mark - Private — Suspending
+
+static inline id _Nullable DispatchablePayloadForRawPayload(id _Nullable rawPayload)
+{
+    return rawPayload == kNullPayload ? nil : rawPayload;
+}
+
+- (void)storeSuspendedDispatchPayload:(nullable id)payload forSubscriptionToken:(id)token
+{
+    self.suspendedDispatchPayloads[token] = payload ?: kNullPayload;
+}
+
+- (void)consumeSuspendedDispatchPayloadForSubscriptionToken:(id)token {
+    id const rawPayload = _suspendedDispatchPayloads[token];
+    
+    if (rawPayload) {
+        [self.suspendedDispatchPayloads removeObjectForKey:token];
+        
+        MUKSignalSubscriber const subscriber = _subscriptions[token];
+        
+        if (subscriber) {
+            [self dispatchToSubscriber:subscriber withPayload:DispatchablePayloadForRawPayload(rawPayload) subscriptionToken:token];
+        }
+    }
 }
 
 @end

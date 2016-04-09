@@ -1,4 +1,4 @@
-#import <MUKSignal/MUKSignal-Base.h>
+#import <MUKSignal/MUKSignal+Subscribing.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -9,7 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)dispatch:(nullable T)payload;
 /**
- Primitive invoked by -dispatch: to call a subscriber
+ Primitive invoked by -dispatch: to call a subscriber or to store payload if 
+ signal is suspended.
  @param subscriber Subscriber to inform
  @param payload Payload to pass to subscriber
  @param token Subscription token
