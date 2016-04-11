@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:../Pod"
+      name = "Pod">
+      <FileRef
+         location = "group:MUKSignal.h">
+      </FileRef>
+      <Group
+         location = "group:Core"
+         name = "Core">
+         <FileRef
+            location = "group:MUKSignal+Dispatching.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal+Subscribing.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal+Suspending.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal-Base.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignal.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Signal Observation"
+         name = "Signal Observation">
+         <FileRef
+            location = "group:MUKSignalObservation.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignalObservation.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Control Action"
+         name = "Control Action">
+         <FileRef
+            location = "group:MUKControlActionSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKControlActionSignal.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:KVO"
+         name = "KVO">
+         <FileRef
+            location = "group:MUKKVOSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKKVOSignal.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Notification"
+         name = "Notification">
+         <FileRef
+            location = "group:MUKNotificationSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKNotificationSignal.m">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:MUKSignalExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
