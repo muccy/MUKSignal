@@ -27,6 +27,16 @@
          </FileRef>
       </Group>
       <Group
+         location = "group:Signal Observation"
+         name = "Signal Observation">
+         <FileRef
+            location = "group:MUKSignalObservation.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKSignalObservation.m">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:Control Action"
          name = "Control Action">
          <FileRef

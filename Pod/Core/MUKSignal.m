@@ -126,7 +126,7 @@ static inline id _Nullable DispatchablePayloadForRawPayload(id _Nullable rawPayl
     id const rawPayload = _suspendedDispatchPayloads[token];
     
     if (rawPayload) {
-        [self.suspendedDispatchPayloads removeObjectForKey:token];
+        [_suspendedDispatchPayloads removeObjectForKey:token];
         
         MUKSignalSubscriber const subscriber = _subscriptions[token];
         
