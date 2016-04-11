@@ -39,4 +39,9 @@
     return [super subscribe:subscriber];
 }
 
+- (void)dispatch:(id)payload {
+    NSAssert([payload isKindOfClass:[NSNotification class]], @"Can only dispatch NSNotification");
+    [super dispatch:payload];
+}
+
 @end

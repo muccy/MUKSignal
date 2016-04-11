@@ -102,6 +102,8 @@
     [signal unsubscribe:token];
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
     XCTAssertNil(receivedNotification);
+    
+    XCTAssertThrows([signal dispatch:@"An object"]);
 }
 
 - (void)testKVO {
@@ -135,6 +137,8 @@
     [signal unsubscribe:token];
     self.string = @"C";
     XCTAssertEqualObjects(receivedChange.value, @"B");
+    
+    XCTAssertThrows([signal dispatch:@"An object"]);
 }
 
 @end

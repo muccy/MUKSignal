@@ -19,6 +19,10 @@
     return [self initWithValue:nil oldValue:nil];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"KVO change: '%@' ---> '%@'", self.oldValue, self.value];
+}
+
 @end
 
 #pragma mark -
@@ -63,6 +67,11 @@ static void *KVOContext = &KVOContext;
     
     // Incremental through suspension
     return [[MUKKVOSignalChange alloc] initWithValue:payload.value oldValue:suspendedPayload.oldValue];
+}
+
+- (void)dispatch:(id)payload {
+    NSAssert([payload isKindOfClass:[MUKKVOSignalChange class]], @"Can only dispatch MUKKVOSignalChange");
+    [super dispatch:payload];
 }
 
 #pragma mark - KVO
