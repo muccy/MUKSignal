@@ -4,3 +4,4 @@
 
 #import <MUKSignal/MUKNotificationSignal.h>
 #import <MUKSignal/MUKKVOSignal.h>
+#import <MUKSignal/MUKControlActionSignal.h>

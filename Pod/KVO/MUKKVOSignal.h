@@ -2,6 +2,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Payload of MUKKVOSignal
 @interface MUKKVOSignalChange<__covariant T> : NSObject
 /// Value before change
 @property (nonatomic, readonly, nullable) T oldValue;
@@ -9,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) T value;
 @end
 
+
+/// A signal sent when observed object changes
 @interface MUKKVOSignal<__covariant T> : MUKSignal
 /// Observed object
 @property (nonatomic, readonly, weak) __kindof NSObject *object;

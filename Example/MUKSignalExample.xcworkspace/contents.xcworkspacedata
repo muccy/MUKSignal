@@ -27,13 +27,13 @@
          </FileRef>
       </Group>
       <Group
-         location = "group:Notification"
-         name = "Notification">
+         location = "group:Control Action"
+         name = "Control Action">
          <FileRef
-            location = "group:MUKNotificationSignal.h">
+            location = "group:MUKControlActionSignal.h">
          </FileRef>
          <FileRef
-            location = "group:MUKNotificationSignal.m">
+            location = "group:MUKControlActionSignal.m">
          </FileRef>
       </Group>
       <Group
@@ -44,6 +44,16 @@
          </FileRef>
          <FileRef
             location = "group:MUKKVOSignal.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Notification"
+         name = "Notification">
+         <FileRef
+            location = "group:MUKNotificationSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKNotificationSignal.m">
          </FileRef>
       </Group>
    </Group>
