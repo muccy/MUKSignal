@@ -11,7 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-/// A signal sent when observed object changes
+/**
+ A signal sent when observed object changes.
+ @warning Pay attention to release the signal when you release the observed 
+ object.
+ */
 @interface MUKKVOSignal<__covariant T> : MUKSignal
 /// Observed object
 @property (nonatomic, readonly, weak) __kindof NSObject *object;

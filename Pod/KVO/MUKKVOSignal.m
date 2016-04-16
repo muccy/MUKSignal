@@ -29,10 +29,23 @@
 
 static void *KVOContext = &KVOContext;
 
+@interface MUKKVOSignal ()
+/*
+ The reason this is unsafe_unretained instead of weak is so that, if observation 
+ is quit during self.object deallocation, this ivar won't be zeroed out yet, and 
+ so we'll still be able to use it to degister for notifications.
+ This does mean that it won't be zeroed out automatically, but we'd be in
+ a dangerous state if that happened anyway (we'd be still registered
+ for KVO on a deallocated object).
+ https://github.com/th-in-gs/THObserversAndBinders/blob/master/THObserversAndBinders/THObserver.m
+*/
+@property (nonatomic, unsafe_unretained, nullable) __kindof NSObject *objectToUnobserve;
+@end
+
 @implementation MUKKVOSignal
 
 - (void)dealloc {
-    [self.object removeObserver:self forKeyPath:self.keyPath context:KVOContext];
+    [self.objectToUnobserve removeObserver:self forKeyPath:self.keyPath context:KVOContext];
 }
 
 - (instancetype)initWithObject:(__kindof NSObject *)object keyPath:(NSString *)keyPath
