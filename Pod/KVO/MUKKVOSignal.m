@@ -39,7 +39,7 @@ static void *KVOContext = &KVOContext;
  for KVO on a deallocated object).
  https://github.com/th-in-gs/THObserversAndBinders/blob/master/THObserversAndBinders/THObserver.m
 */
-@property (nonatomic, unsafe_unretained, nullable) __kindof NSObject *objectToUnobserve;
+@property (nonatomic, readonly, unsafe_unretained, nonnull) __kindof NSObject *objectToUnobserve;
 @end
 
 @implementation MUKKVOSignal
@@ -53,6 +53,7 @@ static void *KVOContext = &KVOContext;
     self = [super init];
     if (self) {
         _object = object;
+        _objectToUnobserve = object;
         _keyPath = [keyPath copy];
         
         [object addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:KVOContext];
