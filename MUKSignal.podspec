@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MUKSignal"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Dispatch signals which could be subscribed by various subscribers."
   s.description      = <<-DESC
                         Dispatch signals which could be subscribed by various subscribers. Subscription could also be suspended. This library also contains specific signals, like notification signals, KVO signals and control target-action signals.
