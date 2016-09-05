@@ -11,19 +11,27 @@
 
 @interface MUKSignalExampleTests : XCTestCase
 @property (nonatomic, copy) NSString *string;
+@property (nonatomic) id payload;
 @end
 
 @implementation MUKSignalExampleTests
 
 - (void)testSubscribing {
     MUKSignal *const signal = [[MUKSignal alloc] init];
-    id const token = [signal subscribe:^(id  _Nonnull payload) {}];
+    id token = [signal subscribe:^(id  _Nonnull payload) {}];
+    XCTAssertNotNil(token);
+    
+    token = [signal subscribeWithTarget:self action:@selector(setPayload:)];
     XCTAssertNotNil(token);
 }
 
 - (void)testUnsubscribing {
     MUKSignal *const signal = [[MUKSignal alloc] init];
-    id const token = [signal subscribe:^(id  _Nonnull payload) {}];
+    id token = [signal subscribe:^(id  _Nonnull payload) {}];
+    XCTAssertNoThrow([signal unsubscribe:token]);
+    XCTAssertNoThrow([signal unsubscribe:token]); // Also twice
+    
+    token = [signal subscribeWithTarget:self action:@selector(setPayload:)];
     XCTAssertNoThrow([signal unsubscribe:token]);
     XCTAssertNoThrow([signal unsubscribe:token]); // Also twice
 }
@@ -39,14 +47,24 @@
         receivedPayload = payload;
     }];
     
+    id const anotherToken = [signal subscribeWithTarget:self action:@selector(setPayload:)];
+    
     XCTAssertNil(receivedPayload);
+    self.payload = nil;
+
     [signal dispatch:payload];
     XCTAssertEqualObjects(receivedPayload, payload);
+    XCTAssertEqualObjects(self.payload, payload);
     
     [signal unsubscribe:token];
+    [signal unsubscribe:anotherToken];
+    
     receivedPayload = nil;
+    self.payload = nil;
+    
     [signal dispatch:payload];
     XCTAssertNil(receivedPayload);
+    XCTAssertNil(self.payload);
 }
 
 - (void)testSuspending {
