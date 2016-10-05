@@ -41,6 +41,10 @@
 
 #pragma mark - Overrides
 
+- (instancetype)init {
+    return [self initWithSubsignals:@[]];
+}
+
 - (void)dispatch:(id)payload {
     NSAssert([payload isKindOfClass:[MUKCompoundSignalPayload class]], @"Can only dispatch MUKCompoundSignalPayload");
     [super dispatch:payload];

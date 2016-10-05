@@ -36,4 +36,8 @@
     [super dispatch:payload];
 }
 
+- (id)subscribe:(void (^)(UIEvent * _Nullable))subscriber {
+    [super subscribe:subscriber];
+}
+
 @end

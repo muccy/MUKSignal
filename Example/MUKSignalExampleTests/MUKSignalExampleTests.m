@@ -160,7 +160,7 @@
     XCTAssertThrows([signal dispatch:(id)@"An object"]);
 }
 
-- (void)testCompound {
+- (void)testCompound {    
     MUKSignal *const subsignal1 = [[MUKSignal alloc] init];
     MUKSignal *const subsignal2 = [[MUKSignal alloc] init];
     
