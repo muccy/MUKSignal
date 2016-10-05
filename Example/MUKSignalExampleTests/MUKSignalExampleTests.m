@@ -126,6 +126,7 @@
 
 - (void)testKVO {
     MUKKVOSignal<NSString *> *const signal = [[MUKKVOSignal alloc] initWithObject:self keyPath:NSStringFromSelector(@selector(string))];
+    XCTAssertTrue([signal isObservingObject:self]);
     
     __block MUKKVOSignalChange<NSString *> *receivedChange = nil;
     id const token = [signal subscribe:^(MUKKVOSignalChange<NSString *> * _Nonnull change) {
