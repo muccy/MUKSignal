@@ -37,7 +37,7 @@
 }
 
 - (id)subscribe:(void (^)(UIEvent * _Nullable))subscriber {
-    [super subscribe:subscriber];
+    return [super subscribe:subscriber];
 }
 
 @end
