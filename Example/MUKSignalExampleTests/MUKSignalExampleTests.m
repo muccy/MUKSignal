@@ -121,7 +121,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:nil userInfo:userInfo];
     XCTAssertNil(receivedNotification);
     
-    XCTAssertThrows([signal dispatch:@"An object"]);
+    XCTAssertThrows([signal dispatch:(id)@"An object"]);
 }
 
 - (void)testKVO {
@@ -157,7 +157,37 @@
     self.string = @"C";
     XCTAssertEqualObjects(receivedChange.value, @"B");
     
-    XCTAssertThrows([signal dispatch:@"An object"]);
+    XCTAssertThrows([signal dispatch:(id)@"An object"]);
+}
+
+- (void)testCompound {
+    MUKSignal *const subsignal1 = [[MUKSignal alloc] init];
+    MUKSignal *const subsignal2 = [[MUKSignal alloc] init];
+    
+    MUKCompoundSignal *const compoundSignal = [[MUKCompoundSignal alloc] initWithSubsignals:@[ subsignal1, subsignal2 ]];
+    XCTAssertEqualObjects(compoundSignal.subsignals, (@[ subsignal1, subsignal2 ]));
+    
+    __block MUKCompoundSignalPayload *receivedPayload = nil;
+    id const token = [compoundSignal subscribe:^(MUKCompoundSignalPayload * _Nullable payload)
+    {
+        receivedPayload = payload;
+    }];
+    
+    XCTAssertNil(receivedPayload);
+    [subsignal1 dispatch:@"Hi"];
+    XCTAssertEqualObjects(receivedPayload.subsignal, subsignal1);
+    XCTAssertEqualObjects(receivedPayload.subpayload, @"Hi");
+    
+    [subsignal2 dispatch:@"there"];
+    XCTAssertEqualObjects(receivedPayload.subsignal, subsignal2);
+    XCTAssertEqualObjects(receivedPayload.subpayload, @"there");
+    
+    receivedPayload = nil;
+    [compoundSignal unsubscribe:token];
+    [subsignal1 dispatch:@"!"];
+    XCTAssertNil(receivedPayload);
+    
+    XCTAssertThrows([compoundSignal dispatch:(id)@"An object"]);
 }
 
 @end

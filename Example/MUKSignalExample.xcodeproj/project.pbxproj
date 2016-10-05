@@ -14,8 +14,8 @@
 		068A78501CB7EBB900712162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 068A784F1CB7EBB900712162 /* Assets.xcassets */; };
 		068A78531CB7EBB900712162 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068A78511CB7EBB900712162 /* LaunchScreen.storyboard */; };
 		068A785E1CB7EBB900712162 /* MUKSignalExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 068A785D1CB7EBB900712162 /* MUKSignalExampleTests.m */; };
-		54BDE4CB222979C01455C706 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D65AC2D23265AB60A124FE3 /* libPods.a */; };
-		C6878736EC91E97AA844C307 /* libPods-MUKSignalExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9C41D517F0E8C0B2A0AF23 /* libPods-MUKSignalExampleTests.a */; };
+		3F4EFD0FEA6D4178B7FE29B9 /* libPods-MUKSignalExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9989EF69E6A75DE8BCDA7841 /* libPods-MUKSignalExample.a */; };
+		73217BAF0FCB10EFE505BD13 /* libPods-MUKSignalExample-MUKSignalExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF3EF0AAB63FA7CBC888FB20 /* libPods-MUKSignalExample-MUKSignalExampleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,12 +42,12 @@
 		068A78591CB7EBB900712162 /* MUKSignalExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MUKSignalExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		068A785D1CB7EBB900712162 /* MUKSignalExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MUKSignalExampleTests.m; sourceTree = "<group>"; };
 		068A785F1CB7EBB900712162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		106BC73C689D04A0D216D74E /* Pods-MUKSignalExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUKSignalExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MUKSignalExampleTests/Pods-MUKSignalExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4D65AC2D23265AB60A124FE3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		77CB6A8EC38A9B1B900520A5 /* Pods-MUKSignalExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUKSignalExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MUKSignalExampleTests/Pods-MUKSignalExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		7B9C3182D22ED3A7CA2D7EEA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		AF9C41D517F0E8C0B2A0AF23 /* libPods-MUKSignalExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MUKSignalExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F65F3B2CD320F28B8259FDD7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		618E5500A9E5440DC8EF4D9D /* Pods-MUKSignalExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUKSignalExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-MUKSignalExample/Pods-MUKSignalExample.release.xcconfig"; sourceTree = "<group>"; };
+		9989EF69E6A75DE8BCDA7841 /* libPods-MUKSignalExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MUKSignalExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF3EF0AAB63FA7CBC888FB20 /* libPods-MUKSignalExample-MUKSignalExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MUKSignalExample-MUKSignalExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E354897F1126B0C0818383 /* Pods-MUKSignalExample-MUKSignalExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUKSignalExample-MUKSignalExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MUKSignalExample-MUKSignalExampleTests/Pods-MUKSignalExample-MUKSignalExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F845295F43F7CDED796C2214 /* Pods-MUKSignalExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUKSignalExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MUKSignalExample/Pods-MUKSignalExample.debug.xcconfig"; sourceTree = "<group>"; };
+		FC8E06E54ABA2448D04F4B33 /* Pods-MUKSignalExample-MUKSignalExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MUKSignalExample-MUKSignalExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MUKSignalExample-MUKSignalExampleTests/Pods-MUKSignalExample-MUKSignalExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54BDE4CB222979C01455C706 /* libPods.a in Frameworks */,
+				3F4EFD0FEA6D4178B7FE29B9 /* libPods-MUKSignalExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6878736EC91E97AA844C307 /* libPods-MUKSignalExampleTests.a in Frameworks */,
+				73217BAF0FCB10EFE505BD13 /* libPods-MUKSignalExample-MUKSignalExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +76,8 @@
 				068A78421CB7EBB900712162 /* MUKSignalExample */,
 				068A785C1CB7EBB900712162 /* MUKSignalExampleTests */,
 				068A78411CB7EBB900712162 /* Products */,
-				FB18E4F78DE1A3CA41290866 /* Pods */,
-				74E8D81BBA30830FFAA0CF74 /* Frameworks */,
+				F42BA4DE9E7E2DF315325A4C /* Pods */,
+				4FAA6AA9CD2DBCD8340E4C2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,22 +123,22 @@
 			path = MUKSignalExampleTests;
 			sourceTree = "<group>";
 		};
-		74E8D81BBA30830FFAA0CF74 /* Frameworks */ = {
+		4FAA6AA9CD2DBCD8340E4C2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D65AC2D23265AB60A124FE3 /* libPods.a */,
-				AF9C41D517F0E8C0B2A0AF23 /* libPods-MUKSignalExampleTests.a */,
+				9989EF69E6A75DE8BCDA7841 /* libPods-MUKSignalExample.a */,
+				EF3EF0AAB63FA7CBC888FB20 /* libPods-MUKSignalExample-MUKSignalExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FB18E4F78DE1A3CA41290866 /* Pods */ = {
+		F42BA4DE9E7E2DF315325A4C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7B9C3182D22ED3A7CA2D7EEA /* Pods.debug.xcconfig */,
-				F65F3B2CD320F28B8259FDD7 /* Pods.release.xcconfig */,
-				106BC73C689D04A0D216D74E /* Pods-MUKSignalExampleTests.debug.xcconfig */,
-				77CB6A8EC38A9B1B900520A5 /* Pods-MUKSignalExampleTests.release.xcconfig */,
+				F845295F43F7CDED796C2214 /* Pods-MUKSignalExample.debug.xcconfig */,
+				618E5500A9E5440DC8EF4D9D /* Pods-MUKSignalExample.release.xcconfig */,
+				F0E354897F1126B0C0818383 /* Pods-MUKSignalExample-MUKSignalExampleTests.debug.xcconfig */,
+				FC8E06E54ABA2448D04F4B33 /* Pods-MUKSignalExample-MUKSignalExampleTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -150,12 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 068A78621CB7EBB900712162 /* Build configuration list for PBXNativeTarget "MUKSignalExample" */;
 			buildPhases = (
-				592A49D13935B0F884EFFB0D /* Check Pods Manifest.lock */,
+				D669077BE6EBB6C5D15FFE9F /* [CP] Check Pods Manifest.lock */,
 				068A783C1CB7EBB900712162 /* Sources */,
 				068A783D1CB7EBB900712162 /* Frameworks */,
 				068A783E1CB7EBB900712162 /* Resources */,
-				B6C94EBB4BBA62797E0152AC /* Embed Pods Frameworks */,
-				6974A67ECF7B01C980882BC4 /* Copy Pods Resources */,
+				926E4019F162223F80894D31 /* [CP] Embed Pods Frameworks */,
+				308F30E0ECAE897B27D15ABE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,12 +170,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 068A78651CB7EBB900712162 /* Build configuration list for PBXNativeTarget "MUKSignalExampleTests" */;
 			buildPhases = (
-				2CEE1A1DBA722A197AA5CEA7 /* Check Pods Manifest.lock */,
+				15E2189C8E4C699322E859AE /* [CP] Check Pods Manifest.lock */,
 				068A78551CB7EBB900712162 /* Sources */,
 				068A78561CB7EBB900712162 /* Frameworks */,
 				068A78571CB7EBB900712162 /* Resources */,
-				29DA0F50267A5D3D0E8A845B /* Embed Pods Frameworks */,
-				BAB5C56D4047C4862F0B2554 /* Copy Pods Resources */,
+				F9F032EE96A09D2DDDC1EBC4 /* [CP] Embed Pods Frameworks */,
+				3F75C6DE59C9C85F6B42B035 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,29 +245,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		29DA0F50267A5D3D0E8A845B /* Embed Pods Frameworks */ = {
+		15E2189C8E4C699322E859AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MUKSignalExampleTests/Pods-MUKSignalExampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2CEE1A1DBA722A197AA5CEA7 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,14 +260,59 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		592A49D13935B0F884EFFB0D /* Check Pods Manifest.lock */ = {
+		308F30E0ECAE897B27D15ABE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MUKSignalExample/Pods-MUKSignalExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F75C6DE59C9C85F6B42B035 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MUKSignalExample-MUKSignalExampleTests/Pods-MUKSignalExample-MUKSignalExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		926E4019F162223F80894D31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MUKSignalExample/Pods-MUKSignalExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D669077BE6EBB6C5D15FFE9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,49 +320,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		6974A67ECF7B01C980882BC4 /* Copy Pods Resources */ = {
+		F9F032EE96A09D2DDDC1EBC4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6C94EBB4BBA62797E0152AC /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BAB5C56D4047C4862F0B2554 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MUKSignalExampleTests/Pods-MUKSignalExampleTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MUKSignalExample-MUKSignalExampleTests/Pods-MUKSignalExample-MUKSignalExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -470,7 +470,7 @@
 		};
 		068A78631CB7EBB900712162 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B9C3182D22ED3A7CA2D7EEA /* Pods.debug.xcconfig */;
+			baseConfigurationReference = F845295F43F7CDED796C2214 /* Pods-MUKSignalExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MUKSignalExample/Info.plist;
@@ -482,7 +482,7 @@
 		};
 		068A78641CB7EBB900712162 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F65F3B2CD320F28B8259FDD7 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 618E5500A9E5440DC8EF4D9D /* Pods-MUKSignalExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MUKSignalExample/Info.plist;
@@ -494,7 +494,7 @@
 		};
 		068A78661CB7EBB900712162 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 106BC73C689D04A0D216D74E /* Pods-MUKSignalExampleTests.debug.xcconfig */;
+			baseConfigurationReference = F0E354897F1126B0C0818383 /* Pods-MUKSignalExample-MUKSignalExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MUKSignalExampleTests/Info.plist;
@@ -507,7 +507,7 @@
 		};
 		068A78671CB7EBB900712162 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77CB6A8EC38A9B1B900520A5 /* Pods-MUKSignalExampleTests.release.xcconfig */;
+			baseConfigurationReference = FC8E06E54ABA2448D04F4B33 /* Pods-MUKSignalExample-MUKSignalExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MUKSignalExampleTests/Info.plist;

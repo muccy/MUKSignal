@@ -37,6 +37,16 @@
          </FileRef>
       </Group>
       <Group
+         location = "group:Compound"
+         name = "Compound">
+         <FileRef
+            location = "group:MUKCompoundSignal.h">
+         </FileRef>
+         <FileRef
+            location = "group:MUKCompoundSignal.m">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:Control Action"
          name = "Control Action">
          <FileRef

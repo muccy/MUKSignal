@@ -1,5 +1,5 @@
 PODS:
-  - MUKSignal (1.0.0)
+  - MUKSignal (1.0.4)
 
 DEPENDENCIES:
   - MUKSignal (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MUKSignal: 691a00eb06f3f712875e788f4b4062e1b4be4dd9
+  MUKSignal: 83e713913368eca5bb795245a068da8abf700906
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 105160ec7a7c39e32d91c0ed0f3586923b73fcac
+
+COCOAPODS: 1.0.1
