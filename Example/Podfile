@@ -1,5 +1,5 @@
-pod "MUKSignal", :path => "../"
-
-target "MUKSignalExampleTests", :exclusive => false do
+target 'MUKSignalExample' do
   pod "MUKSignal", :path => "../"
+
+  target "MUKSignalExampleTests"
 end

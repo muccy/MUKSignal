@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  @warning Pay attention to release the signal when you release the observed 
  object.
  */
-@interface MUKKVOSignal<__covariant T> : MUKSignal
+@interface MUKKVOSignal<__covariant T> : MUKSignal<MUKKVOSignalChange *>
 /// Observed object
 @property (nonatomic, readonly, weak) __kindof NSObject *object;
 /// Observed key path
