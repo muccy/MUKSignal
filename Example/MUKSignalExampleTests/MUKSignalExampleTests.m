@@ -124,42 +124,6 @@
     XCTAssertThrows([signal dispatch:(id)@"An object"]);
 }
 
-- (void)testKVO {
-    MUKKVOSignal<NSString *> *const signal = [[MUKKVOSignal alloc] initWithObject:self keyPath:NSStringFromSelector(@selector(string))];
-    XCTAssertTrue([signal isObservingObject:self]);
-    
-    __block MUKKVOSignalChange<NSString *> *receivedChange = nil;
-    id const token = [signal subscribe:^(MUKKVOSignalChange<NSString *> * _Nonnull change) {
-        receivedChange = change;
-    }];
-    
-    XCTAssertNil(receivedChange);
-    self.string = @"A";
-    XCTAssertEqualObjects(receivedChange.value, @"A");
-    XCTAssertNil(receivedChange.oldValue);
-    
-    self.string = nil;
-    XCTAssertNil(receivedChange.value);
-    XCTAssertEqualObjects(receivedChange.oldValue, @"A");
-    
-    MUKKVOSignalChange<NSString *> *const changeSnapshot = receivedChange;
-    [signal suspend:token];
-    self.string = @"A";
-    XCTAssertEqual(receivedChange, changeSnapshot);
-    self.string = @"B";
-    XCTAssertEqual(receivedChange, changeSnapshot);
-    
-    [signal resume:token];
-    XCTAssertEqualObjects(receivedChange.value, @"B");
-    XCTAssertNil(receivedChange.oldValue);
-    
-    [signal unsubscribe:token];
-    self.string = @"C";
-    XCTAssertEqualObjects(receivedChange.value, @"B");
-    
-    XCTAssertThrows([signal dispatch:(id)@"An object"]);
-}
-
 - (void)testCompound {    
     MUKSignal *const subsignal1 = [[MUKSignal alloc] init];
     MUKSignal *const subsignal2 = [[MUKSignal alloc] init];

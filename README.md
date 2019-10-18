@@ -46,17 +46,6 @@ A subscription could be temporarily suspended.
 
 Library includes specific signals which are dispatched in particular conditions.
 
-### KVO
-
-KVO signals observe an object and are dispatched when a change occurs.
-
-```objective-c
-MUKKVOSignal<NSString *> *signal = [[MUKKVOSignalChange alloc] initWithObject:self keyPath:@"name"];
-[signal subscribe:^(MUKKVOSignalChange<NSString *> change) {
-    NSLog(@"Name changed from '%@' to '%@'", change.oldValue, change.value);
-}];
-```
-
 ### Notification
 
 Notification signals are dispatched when a notification fires.
